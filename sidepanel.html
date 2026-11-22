@@ -4,98 +4,268 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Human Typer</title>
+  <title>Human Typer V2</title>
   <link rel="stylesheet" href="sidepanel.css">
 </head>
 
 <body>
   <main class="app">
 
-    <header class="header">
-      <div>
-        <div class="brand">HUMAN<span>TYPER</span></div>
-        <p class="subtitle">Typing simulator // v1.0</p>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">H</div>
+        <div>
+          <h1>HUMAN<span>TYPER</span></h1>
+          <small>VERSION 2.0 // WORKSPACE</small>
+        </div>
       </div>
-      <div class="status-indicator" id="statusIndicator">
-        READY
+
+      <div class="system-status">
+        <span class="status-dot"></span>
+        <span id="status">READY</span>
       </div>
     </header>
 
-    <section class="input-section">
-      <div class="section-heading">
-        <label for="inputText">YOUR TEXT</label>
-        <span id="charCount">0 characters</span>
+    <nav class="navigation">
+      <button class="nav-btn active" data-page="workspace">WORKSPACE</button>
+      <button class="nav-btn" data-page="templates">TEMPLATES</button>
+      <button class="nav-btn" data-page="history">HISTORY</button>
+    </nav>
+
+    <!-- WORKSPACE -->
+
+    <section class="page active" id="workspace">
+
+      <div class="section-title">
+        <div>
+          <h2>Typing workspace</h2>
+          <p>Prepare and preview your text.</p>
+        </div>
       </div>
 
-      <textarea
-        id="inputText"
-        placeholder="Enter or paste your text here..."
-        spellcheck="true"
-      ></textarea>
+      <div class="editor-card">
+
+        <div class="card-header">
+          <label for="inputText">TEXT EDITOR</label>
+          <span id="charCount">0 characters</span>
+        </div>
+
+        <textarea
+          id="inputText"
+          placeholder="Write or paste your text here..."
+          spellcheck="true"
+        ></textarea>
+
+        <div class="editor-footer">
+          <span id="wordCount">0 words</span>
+          <button id="clearBtn" class="text-button">CLEAR TEXT</button>
+        </div>
+
+      </div>
+
+      <div class="card settings-card">
+
+        <div class="card-header">
+          <label>SIMULATION SETTINGS</label>
+          <span>CONTROL PANEL</span>
+        </div>
+
+        <div class="setting-row">
+          <label for="speedPreset">Speed preset</label>
+
+          <select id="speedPreset">
+            <option value="slow">Slow — 25 WPM</option>
+            <option value="normal" selected>Normal — 45 WPM</option>
+            <option value="fast">Fast — 70 WPM</option>
+            <option value="custom">Custom speed</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <label for="speed">Typing speed</label>
+            <p class="setting-description">Words per minute</p>
+          </div>
+
+          <strong id="speedValue">45 WPM</strong>
+        </div>
+
+        <input
+          type="range"
+          id="speed"
+          min="10"
+          max="120"
+          value="45"
+        >
+
+        <div class="range-labels">
+          <span>10 WPM</span>
+          <span>120 WPM</span>
+        </div>
+
+        <div class="setting-row">
+          <label for="timingMode">Timing mode</label>
+
+          <select id="timingMode">
+            <option value="steady">Steady</option>
+            <option value="varied" selected>Varied preview timing</option>
+          </select>
+        </div>
+
+        <label class="toggle-row">
+          <span>
+            <strong>Punctuation pauses</strong>
+            <small>Show longer pauses after punctuation.</small>
+          </span>
+          <input type="checkbox" id="punctuation" checked>
+        </label>
+
+      </div>
+
+      <div class="card simulation-card">
+
+        <div class="card-header">
+          <label>LIVE SIMULATION PREVIEW</label>
+          <strong id="progress">0%</strong>
+        </div>
+
+        <div class="preview" id="preview">
+          <span class="placeholder">
+            Your simulation will appear here...
+          </span>
+        </div>
+
+        <div class="progress-track">
+          <div id="progressBar"></div>
+        </div>
+
+        <div class="stats-grid">
+          <div>
+            <small>CHARACTERS</small>
+            <strong id="typedCount">0</strong>
+          </div>
+
+          <div>
+            <small>ELAPSED</small>
+            <strong id="elapsed">00:00</strong>
+          </div>
+
+          <div>
+            <small>REMAINING</small>
+            <strong id="remaining">0</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" class="primary-button">
+          START SIMULATION
+        </button>
+
+        <div class="control-grid">
+          <button id="pauseBtn" disabled>PAUSE</button>
+          <button id="stopBtn" disabled>STOP</button>
+        </div>
+
+        <div class="control-grid">
+          <button id="copyBtn">COPY TEXT</button>
+          <button id="resetBtn">RESET PREVIEW</button>
+        </div>
+      </div>
+
+      <div class="card docs-card">
+        <div class="docs-icon">G</div>
+
+        <div class="docs-content">
+          <strong>GOOGLE DOCS WORKFLOW</strong>
+          <p>Copy your text and manually paste it into your document.</p>
+        </div>
+
+        <button id="docsBtn" class="outline-button">
+          COPY
+        </button>
+      </div>
+
     </section>
 
-    <section class="settings">
-      <div class="section-heading">
-        <label for="speed">TYPING SPEED</label>
-        <span id="speedValue">45 WPM</span>
+    <!-- TEMPLATES -->
+
+    <section class="page" id="templates">
+
+      <div class="section-title">
+        <div>
+          <h2>My templates</h2>
+          <p>Save and reuse your text.</p>
+        </div>
       </div>
 
-      <input
-        type="range"
-        id="speed"
-        min="10"
-        max="120"
-        value="45"
-      >
+      <div class="card">
+        <label>CREATE TEMPLATE</label>
 
-      <div class="range-labels">
-        <span>10 WPM</span>
-        <span>120 WPM</span>
+        <input
+          type="text"
+          id="templateName"
+          placeholder="Template name..."
+        >
+
+        <button id="saveTemplateBtn" class="primary-button">
+          SAVE CURRENT TEXT
+        </button>
       </div>
+
+      <div class="section-title">
+        <h2>Saved templates</h2>
+        <span id="templateCount">0 saved</span>
+      </div>
+
+      <div id="templateList" class="item-list">
+        <p class="empty-state">No templates saved yet.</p>
+      </div>
+
     </section>
 
-    <section class="preview-section">
-      <div class="section-heading">
-        <label>LIVE SIMULATION</label>
-        <span id="progress">0%</span>
+    <!-- HISTORY -->
+
+    <section class="page" id="history">
+
+      <div class="section-title">
+        <div>
+          <h2>Session history</h2>
+          <p>Your completed simulations.</p>
+        </div>
       </div>
 
-      <div id="preview" class="preview">
-        <span class="placeholder">
-          Your typing simulation will appear here...
-        </span>
+      <div class="stats-grid history-stats">
+        <div>
+          <small>SESSIONS</small>
+          <strong id="totalSessions">0</strong>
+        </div>
+
+        <div>
+          <small>CHARACTERS</small>
+          <strong id="totalCharacters">0</strong>
+        </div>
+
+        <div>
+          <small>TEMPLATES</small>
+          <strong id="totalTemplates">0</strong>
+        </div>
       </div>
 
-      <div class="progress-track">
-        <div id="progressBar"></div>
+      <div id="historyList" class="item-list">
+        <p class="empty-state">No completed sessions yet.</p>
       </div>
-    </section>
 
-    <section class="controls">
-      <button id="startBtn" class="primary">
-        START SIMULATION
+      <button id="clearHistoryBtn" class="danger-button">
+        CLEAR HISTORY
       </button>
 
-      <div class="button-row">
-        <button id="pauseBtn" disabled>PAUSE</button>
-        <button id="stopBtn" disabled>STOP</button>
-        <button id="copyBtn">COPY TEXT</button>
-      </div>
-    </section>
-
-    <section class="docs-section">
-      <div class="docs-title">GOOGLE DOCS</div>
-      <p>
-        Copy your text, open your document, click where
-        you want it inserted and paste.
-      </p>
-      <button id="docsBtn" class="secondary">
-        COPY FOR GOOGLE DOCS
-      </button>
     </section>
 
     <footer>
-      HUMAN TYPER <span>•</span> LOCAL SIMULATION
+      HUMAN TYPER V2.0
+      <span>LOCAL STORAGE ENABLED</span>
     </footer>
 
   </main>

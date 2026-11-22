@@ -1,0 +1,17 @@
+
+{
+  "manifest_version": 3,
+  "name": "Human Typer",
+  "version": "1.0.0",
+  "description": "A user-controlled typing practice tool.",
+  "permissions": ["sidePanel"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Open Human Typer"
+  }
+}

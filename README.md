@@ -1,40 +1,61 @@
 
-# Human Typer
+# Human Typer V2
 
-A Chrome Manifest V3 typing simulator.
+A Chrome Manifest V3 typing simulation workspace.
 
 ## Features
 
-- Character-by-character typing preview
-- Adjustable typing speed (10–120 WPM)
-- Pause and resume
-- Stop and restart
-- Live progress tracking
-- Local text and settings storage
+- Adjustable typing speed from 10 to 120 WPM
+- Slow, normal and fast presets
+- Steady and varied preview timing
+- Optional punctuation pauses
+- Start, pause, resume and stop controls
+- Live character and progress tracking
+- Session duration tracking
+- Save and reuse text templates
+- Completed session history
+- Local settings persistence
 - Clipboard support for Google Docs
 
 ## Installation
 
-1. Download or clone this repository.
-2. Open chrome://extensions
-3. Enable Developer mode.
-4. Click Load unpacked.
-5. Select the project folder.
-6. Click the Human Typer extension icon.
+1. Download the repository ZIP.
+2. Extract the ZIP.
+3. Open chrome://extensions.
+4. Enable Developer mode.
+5. Click Load unpacked.
+6. Select the folder containing manifest.json.
 
-## Privacy
+## Updating
 
-All text and settings remain in local browser storage.
-No external servers or paid APIs are used.
+After editing files:
 
-## Google Docs
-
-Use the copy button and paste the text
-into your Google Docs document manually.
+1. Commit changes to GitHub.
+2. Download the latest ZIP.
+3. Extract it.
+4. Reload the extension from chrome://extensions.
 
 ## Technology
 
-- HTML
-- CSS
-- JavaScript
-- Chrome Manifest V3
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Chrome Extension Manifest V3
+- Chrome Storage API
+- Clipboard API
+
+## Privacy
+
+Text, templates, history and preferences are stored locally
+using Chrome storage.
+
+No external API, backend or paid service is required.
+
+## Google Docs
+
+The extension provides clipboard-based text transfer.
+Users manually insert copied text into their documents.
+
+## Version
+
+2.0.0
